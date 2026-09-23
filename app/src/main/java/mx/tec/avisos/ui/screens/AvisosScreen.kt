@@ -63,8 +63,10 @@ fun AvisosScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = onPublicar) {
-                Icon(Icons.Default.Add, contentDescription = "Publicar aviso")
+            if (sesion.puedePublicar) {
+                FloatingActionButton(onClick = onPublicar) {
+                    Icon(Icons.Default.Add, contentDescription = "Publicar aviso")
+                }
             }
         }
     ) { padding ->
@@ -92,7 +94,7 @@ fun AvisosScreen(
     }
 }
 
-private val demoSesion = Sesion("profe.demo", Rol.PROFESOR, "x", "y", System.currentTimeMillis() / 1000 + 280)
+private val demoSesion = Sesion("profe.demo", Rol.PROFESOR, "x", "y", System.currentTimeMillis()/ 1000+280)
 
 private val demoAvisos = listOf(
     Aviso(2, "Examen parcial", "El parcial es el jueves a las 10:00 en el salón de siempre.", "profe.demo", "2026-09-21 10:00:00"),
